@@ -1,0 +1,43 @@
+﻿@model Practice_1.Models.PageTwo
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Welcome</title>
+</head>
+<body>
+    <p>Добро пожаловать</p>
+    @using (Html.BeginForm())
+    {
+        <p>Ваше имя: <br> @Html.TextBoxFor(x => x.TextBox)</p>
+        <p>Выберите животное/животных: <br> @Html.ListBox("Pets", new MultiSelectList(new string[] { "Кот", "Собака", "Рыбки", "Крыса", "Морская свинка", "Кролик" }))</p>
+        <p>
+            Ваш пол: <br> @Html.DropDownList("Пол", new List<SelectListItem>
+            {
+                new SelectListItem{ Text="Женщина", Value = "Женщина" },
+                new SelectListItem{ Text="Мужчина", Value = "Мужчина" },
+                new SelectListItem{ Text="Не знаю", Value = "Не знаю" },
+            })
+        </p>
+        <p>
+            Что нравится больше:
+            <br>Зима  @Html.RadioButtonFor(x => x.Seasons, "Зима")
+            <br>Весна @Html.RadioButtonFor(x => x.Seasons, "Весна")
+            <br>Лето  @Html.RadioButtonFor(x => x.Seasons, "Лето")
+            <br>Осень @Html.RadioButtonFor(x => x.Seasons, "Осень")
+        </p>
+        @Html.ValidationSummary()
+        <input type="submit" value="Отправить" />
+    }
+    <div>
+        <label>@ViewBag.Label</label>
+    </div>
+</body>
+</html>

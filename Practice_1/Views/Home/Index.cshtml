@@ -1,0 +1,29 @@
+﻿@model Practice_1.Models.ClassForForm
+
+@{
+    // ViewBag.Title = "View";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Form</title>
+    
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div>
+            @ViewBag.Wrong
+        </div>
+        @Html.ValidationSummary()
+        <p>Логин: @Html.TextBoxFor(x => x.Login)</p>
+        <p>Пароль: @Html.TextBoxFor(x => x.Password)</p>
+        <input type="submit" value="Войти" />
+    }
+</body>
+</html>
+
